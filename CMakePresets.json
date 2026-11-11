@@ -1,0 +1,137 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "inherits": "debug",
+      "displayName": "Release",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "asan-ubsan",
+      "inherits": "debug",
+      "displayName": "ASan and UBSan",
+      "binaryDir": "${sourceDir}/build/asan-ubsan",
+      "cacheVariables": {
+        "LLVP_ENABLE_ASAN_UBSAN": "ON"
+      }
+    },
+    {
+      "name": "tsan",
+      "inherits": "debug",
+      "displayName": "ThreadSanitizer",
+      "binaryDir": "${sourceDir}/build/tsan",
+      "cacheVariables": {
+        "LLVP_ENABLE_TSAN": "ON"
+      }
+    },
+    {
+      "name": "opencv",
+      "inherits": "release",
+      "displayName": "Release with OpenCV",
+      "binaryDir": "${sourceDir}/build/opencv",
+      "cacheVariables": {
+        "LLVP_ENABLE_OPENCV": "ON"
+      }
+    },
+    {
+      "name": "vision",
+      "inherits": "opencv",
+      "displayName": "Release with OpenCV and LibTorch",
+      "binaryDir": "${sourceDir}/build/vision",
+      "cacheVariables": {
+        "LLVP_ENABLE_OPENCV": "ON",
+        "LLVP_BUILD_TORCH_PROBE": "ON",
+        "CMAKE_PREFIX_PATH": "${sourceDir}/.venv/lib/python3.14/site-packages/torch/share/cmake",
+        "FETCHCONTENT_SOURCE_DIR_OPENCV": "${sourceDir}/build/opencv/_deps/opencv-src"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release",
+      "configurePreset": "release"
+    },
+    {
+      "name": "asan-ubsan",
+      "configurePreset": "asan-ubsan"
+    },
+    {
+      "name": "tsan",
+      "configurePreset": "tsan"
+    },
+    {
+      "name": "opencv",
+      "configurePreset": "opencv"
+    },
+    {
+      "name": "vision",
+      "configurePreset": "vision"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "asan-ubsan",
+      "configurePreset": "asan-ubsan",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "tsan",
+      "configurePreset": "tsan",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "opencv",
+      "configurePreset": "opencv",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "vision",
+      "configurePreset": "vision",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}

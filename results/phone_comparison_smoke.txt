@@ -1,0 +1,5 @@
+# Low-latency phone camera comparison
+# utc_started=20261111T184004Z source=camera:1 duration_seconds=10 repetitions=1
+# Keep the camera scene, lighting, model, hardware, and display setting fixed.
+repetition=1 mode=fifo capacity=8 captured=249 admitted=240 processed=233 overflow_dropped=9 stale_dropped=0 shutdown_dropped=7 result_replaced=0 processing_fps=23.1717 p50_detection_age_ms=264.078 p95_detection_age_ms=315.849 p99_detection_age_ms=448.019
+repetition=1 mode=latest capacity=8 captured=283 admitted=283 processed=278 overflow_dropped=0 stale_dropped=4 shutdown_dropped=1 result_replaced=0 processing_fps=27.6427 p50_detection_age_ms=58.391 p95_detection_age_ms=65.2539 p99_detection_age_ms=66.1401

@@ -1,0 +1,50 @@
+{
+  "artifact": "ssdlite320.pt",
+  "artifact_sha256": "c3676ca7b0f3f3086e1601e2f5f3579f33a43807d2dd208fc37650e708292774",
+  "model": "ssdlite320_mobilenet_v3_large",
+  "weights": "SSDLite320_MobileNet_V3_Large_Weights.DEFAULT",
+  "python": "3.14",
+  "torch": "2.14.1",
+  "torchvision": "0.29.2",
+  "export_warning": "torch.jit.script is deprecated and is not officially supported on Python 3.14; this artifact is accepted only after the C++ parity gate",
+  "input": {
+    "shape": [
+      3,
+      320,
+      320
+    ],
+    "dtype": "float32",
+    "range": [
+      0.0,
+      1.0
+    ],
+    "color_order": "RGB"
+  },
+  "output": {
+    "shape": "N x 6",
+    "columns": [
+      "x1",
+      "y1",
+      "x2",
+      "y2",
+      "score",
+      "class_id"
+    ],
+    "coordinates": "input pixels",
+    "nms": "included by torchvision detector"
+  },
+  "score_threshold": 0.25,
+  "parity_fixture": "models/fixtures/dog.jpg",
+  "parity_tensor": "models/fixtures/dog.f32",
+  "parity_tensor_sha256": "026f37f72cc64c36e2b2b008dc320c2bbb57b29dce0c59248ee1de5bee90bed9",
+  "parity_rows": 1,
+  "parity_sum": 662.3147583007812,
+  "parity_first_row": [
+    29.468902587890625,
+    10.8994140625,
+    303.5421447753906,
+    299.5982971191406,
+    0.8059942126274109,
+    18.0
+  ]
+}
